@@ -1,0 +1,126 @@
+:root{
+
+  --bs-dark:#000 !important;
+  --bs-dark-rgb:0,0,0 !important;
+}
+
+.store-notify{
+  background-color: rgb(255, 220, 0); color: rgb(0, 0, 0);
+}
+
+.store-notify button {
+  position: absolute;
+  left: 12px;
+}
+
+.nav-link{
+  color:white !important;
+}
+
+.section-title{
+  font-family: dinnextltarabic-regular!important;
+  position: relative;
+  color: #636363;
+  font-size: 20px;
+  font-weight: 700;
+  z-index: 50;
+}
+
+.add_to_card_btn{
+  background-color: #dbdbdbcc;
+  border: #dbdbdbcc;
+  color: #000;
+  border-radius: 0 !important;
+}
+
+
+.add_to_card_btn:hover{
+  background-color: #000 !important;
+  border-color: #000;
+  color:#fff;
+}
+
+.add_to_card_btn_cart{
+  color: #fff;
+  opacity: 0;
+  position: absolute;
+  right: 32px;
+  /* top: 74%; */
+  bottom: 18px;
+  transform: translateY(-50%) translateX(46px);
+  transition: all .5s cubic-bezier(.68,-.55,.265,1.55);
+  /* visibility: hidden; */
+}
+
+.add_to_card_btn:hover .add_to_card_btn_cart {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+  visibility: visible;
+}
+
+.product{
+  color: #5a5a5a;
+  border:1px #bbbbbb2e solid !important;
+}
+
+.product div .price{
+  color: #000 !important;
+}
+.product:hover{
+  color: #000 !important;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%);
+}
+
+.feature_title{
+  font-size: 16px;
+}
+
+.footer-main{
+
+  border-top-color:#000000;
+  padding: 2rem 0;
+  color: #fff;
+  background-color: #2a2a2a;
+}
+
+.footer-title{
+  border-bottom: 1px solid hsla(0,0%,100%,.1);
+  color:#000000;
+  padding-bottom: .7rem;
+  margin-bottom: 1rem;
+  font-size: 15px;
+}
+.footer-title span {
+  color: #fff;
+}
+
+.footer-links{
+  list-style: none;
+  -webkit-columns: 2;
+  columns: 2;
+}
+
+.footer-links a,.store-contact.social a{
+ color:white !important;
+ text-decoration: none;
+
+}
+
+.fs-payment .icons img {
+  height: auto;
+  max-height: 25px;
+  max-width: 45px;
+  width: auto;
+}
+
+.fs-rights p {
+  color: #8f8f8f
+}
+.fs-rights p a {
+  color: #8f8f8f;
+  text-decoration: none;
+}
+
+.fs-rights p a:hover{
+  color:#000;
+}
