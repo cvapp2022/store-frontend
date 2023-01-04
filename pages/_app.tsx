@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import SSRProvider from 'react-bootstrap/SSRProvider';
 import NavBar from '../components/widgets/navbar';
+import Cart from '../components/widgets/cart';
 import Footer from '../components/widgets/footer';
 import TopAlert from '../components/widgets/topAlert';
 import Head from "next/head";
@@ -85,6 +86,7 @@ function MyApp({ Component, pageProps,  ...rest }: AppProps) {
           <TopAlert></TopAlert>
           { !hideOn ? <NavBar></NavBar> : <></>}
           <Component {...pageProps} />
+          <Cart></Cart>
           <Footer></Footer>
           
         </Provider>

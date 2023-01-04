@@ -49,7 +49,7 @@ export default function navbar(){
                                     :
                                     <>
                                         <Link href="/login" passHref>
-                                            <Nav.Link className="d-flex align-items-center">
+                                            <Nav.Link className="d-flex align-items-center shopping_cart">
                                                 <div className="mx-2">
                                                     <FontAwesomeIcon icon={faCartShopping} />    
                                                 </div>

@@ -6,10 +6,12 @@ import { AppState } from "./store";
 export interface ApplicationState {
 
     categories:Category[];
+    display_added_to_cart_modal:boolean
 }
 
 const initialState: ApplicationState = {
-    categories:[]
+    categories:[],
+    display_added_to_cart_modal:false
 };
 
 // Actual Slice
@@ -22,6 +24,9 @@ export const applicationSlice = createSlice({
       setApplicationState(state,action) {
         state.categories=action.payload.categories;
       },
+      setDisplayAddedToCartModal(state,action) {
+        state.display_added_to_cart_modal=action.payload
+      }
   
       
 
@@ -38,6 +43,7 @@ export const applicationSlice = createSlice({
   });
 
 export const { setApplicationState } = applicationSlice.actions;
+export const { setDisplayAddedToCartModal }=applicationSlice.actions
 
 export const selectApplicationState = (state: AppState) => state;
 

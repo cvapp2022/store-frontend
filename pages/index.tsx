@@ -36,24 +36,28 @@ const Home: NextPage = ({products} : any) => {
       title:'المنتجات الاكثر مبيعا',
       items:[
         {
+          id:1,
           title:'tttttt',
           in_stock:12,
           price:1212,
           
         },
         {
+          id:2,
           title:'tttttt',
           in_stock:12,
           price:1212,
           
         },
         {
+          id:3,
           title:'tttttt',
           in_stock:12,
           price:1212,
           
         },
         {
+          id:4,
           title:'tttttt',
           in_stock:12,
           price:1212,
@@ -65,24 +69,28 @@ const Home: NextPage = ({products} : any) => {
       title:'منتجات صدرت حديثا',
       items:[
         {
+          id:5,
           title:'tttttt',
           in_stock:12,
           price:1212,
           
         },
         {
+          id:6,
           title:'tttttt',
           in_stock:12,
           price:1212,
           
         },
         {
+          id:7,
           title:'tttttt',
           in_stock:12,
           price:1212,
           
         },
         {
+          id:8,
           title:'tttttt',
           in_stock:12,
           price:1212,
