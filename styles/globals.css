@@ -128,7 +128,7 @@
 
 .flying-img {
   position: absolute;
-  animation: fly_to_cart 2s ease-in-out;
+  animation: fly_to_cart 3s ease-in-out;
 }
 
 .modal-header .header__title span{

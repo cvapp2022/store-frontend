@@ -61,7 +61,7 @@ function product({product} : any) {
                     // shopping_cart.classList.remove('active');
                     
                 }
-            }, 1000);
+            }, 2000);
         }
         
     }
