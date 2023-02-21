@@ -10,10 +10,10 @@ class MyDocument extends Document {
     return (
       <Html lang="ar" dir="rtl">
         <Head />
-        <body>
+        <body className='bg-gradient'>
           <Main />
           <NextScript />
-        </body>
+        </body> 
       </Html>
     )
   }

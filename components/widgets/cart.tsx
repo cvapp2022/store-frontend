@@ -16,7 +16,7 @@ function cart() {
             <Modal 
                 onHide={handleClose}
                 backdrop="static"
-                show={applicationState.application.display_added_to_cart_modal}
+                
                 
             >
                 <Modal.Header>

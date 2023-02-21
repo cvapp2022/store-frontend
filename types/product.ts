@@ -1,9 +1,8 @@
 import {Category} from './category'
 
-export  interface Product {
+export  interface product {
     id: number,
-    title: string;
-    in_stock: number;
-    price: number;
+    product_permalink: string;
+    strings:object;
     // category:Category,
   }

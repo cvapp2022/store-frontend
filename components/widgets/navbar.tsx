@@ -11,7 +11,7 @@ export default function navbar(){
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const router =useRouter();
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const userState = useSelector(selectUserState);
+    // const userState = useSelector(selectUserState);
     
     return (
         <>
@@ -41,7 +41,10 @@ export default function navbar(){
                             </Form>
                         </Col>
                         <Col sm="4">
-                            <Nav className="ms-auto d-none align-items-center justify-content-end d-sm-flex">
+                            <Link href="/account" passHref>
+                                <Nav.Link>Account</Nav.Link>
+                            </Link>
+                            {/* <Nav className="ms-auto d-none align-items-center justify-content-end d-sm-flex">
                                 {userState.authenticated ? 
                                     <Link href="/account" passHref>
                                         <Nav.Link>Account</Nav.Link>
@@ -69,12 +72,9 @@ export default function navbar(){
                                                 <FontAwesomeIcon icon={faUser} /> 
                                             </Nav.Link>
                                         </Link>
-                                        {/* <Link href="/register" passHref>
-                                            <Nav.Link>Register</Nav.Link>
-                                        </Link> */}
                                     </>
                                 }
-                            </Nav>
+                            </Nav> */}
                         </Col>
                     </Row>
                 </Container>
