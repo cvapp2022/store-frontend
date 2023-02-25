@@ -31,12 +31,12 @@ export default function footer() {
                                 </a>&nbsp;
                             </div>
                             <div className="store-contact">
-                                <a href="">
+                                {/* <a href="">
                                     <Image src="https://cdn.assets.salla.network/stores/themes/default/assets/images/appstore.png?v=v1.5.424" width={100} alt="appstore"></Image>
                                 </a>
                                 <a href="">
                                     <Image src="https://cdn.assets.salla.network/stores/themes/default/assets/images/googleplay.png?v=v1.5.424" width={100} alt="googleplay"></Image>
-                                </a>
+                                </a> */}
                             </div>
                         </Col>
                         <Col sm="4" className=" mb-3 mb-md-0">
@@ -66,11 +66,11 @@ export default function footer() {
                             </p>
                         </div>
                         <div className="fs-payment">
-                            <div className="icons">
+                            {/* <div className="icons">
                                 <Image src="https://cdn.assets.salla.network/stores/themes/default/assets/images/mada.png?v=v1.5.424" alt=" "></Image>
                                 <Image src="https://cdn.assets.salla.network/stores/themes/default/assets/images/cc.png?v=v1.5.424" alt=" "></Image>
                                 <Image src="https://cdn.assets.salla.network/stores/themes/default/assets/images/applepay.svg?v=v1.5.424" alt=""></Image>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </Container>

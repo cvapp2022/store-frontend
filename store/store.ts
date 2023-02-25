@@ -2,15 +2,32 @@ import { configureStore, ThunkAction, Action, combineReducers } from "@reduxjs/t
 import { userSlice } from "./userSlice";
 import { applicationSlice } from "./appSlice";
 import { layoutSlice } from "./layoutSlice";
+import { cartSlice } from "./cartSlice";
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
 
 const combinedReducer = combineReducers({
-  [layoutSlice.name]:layoutSlice.reducer
+  // [applicationSlice.name]:applicationSlice.reducer,
+  [layoutSlice.name]:layoutSlice.reducer,
+  [cartSlice.name]:cartSlice.reducer
 });
 
 
 const masterReducer = (state: any, action: any) => {
-  console.log(action)
+  if(action.type==='LOAD_SSR'){
+    const nextState = {
+      ...state, // use previous state
+      layout: {
+          mainLoaded:action.payload.layout.mainLoaded,
+          main:action.payload.layout.main
+      },
+      cart:{
+        items:action.payload.cart.items,
+        identifier:action.payload.cart.identifier,
+        totalAmount:action.payload.cart.totalAmount,
+      }
+  }
+  return nextState;
+  }
   if (action.type === HYDRATE) {
       const nextState = {
           ...state, // use previous state
@@ -38,7 +55,8 @@ const makeStore = () =>
   configureStore({
     reducer:masterReducer,
     devTools: true,
-  });
+});
+
 
 export type AppStore = ReturnType<typeof makeStore>;
 export type AppState = ReturnType<AppStore["getState"]>;
@@ -49,4 +67,6 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   Action 
 >; 
 
-export const wrapper = createWrapper<AppStore>(makeStore,{debug:true});
+  //   "fetchMainLayout", 
+
+export const wrapper = createWrapper<AppStore>(makeStore,{debug:false});

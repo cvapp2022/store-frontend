@@ -4,22 +4,17 @@ import Head from 'next/head';
 import ProdList from '../components/lists/prodList';
 import MainCarousel from '../components/widgets/mainCarousel';
 import { Container} from 'react-bootstrap';
-import {useSelector,useDispatch  } from "react-redux";
-import { selectLayoutState,setMainLayout } from '../store/layoutSlice';
-import { useEffect } from 'react';
-import { wrapper } from '../store/store';
+import {useSelector  } from "react-redux";
+import { selectLayoutState } from '../store/layoutSlice';
 import { layoutItem } from '../types/layoutItem';
-import { fetchMainLayout } from '../utils/requests';
+import { getServerSideProps } from '../utils/serverProp';
+
 
 const Home: NextPage = (props:any) => {
 
-  const dispatch=useDispatch()
+  // const dispatch=useDispatch()
   const mlayout=useSelector(selectLayoutState)
-  useEffect(()=>{
-    if(!mlayout.mainLoaded){
-      dispatch(setMainLayout(props.main))
-    }
-  })
+
 
   return (
     <>
@@ -39,16 +34,9 @@ const Home: NextPage = (props:any) => {
 }
 
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  () => async () => {
-
-    var data = await fetchMainLayout();
-    return {
-      props: {main:data.payload},
-    };
-})
 
 
+export { getServerSideProps };
 
 
 export default Home;

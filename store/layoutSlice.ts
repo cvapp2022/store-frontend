@@ -49,13 +49,7 @@ export const layoutSlice = createSlice({
       // },
     },
     extraReducers: {
-      // [HYDRATE]: (state,action) => {
-      //   console.log('HYDRATE', state, action.payload);
-      //   return {
-      //     ...state,
-      //     ...action.payload.main,
-      //   };
-      // }, 
+ 
       // [fetchMainLayout.pending.type]: (state, action) => { 
       //   state.mainLoaded=false;
       //   state.main={} 

@@ -19,7 +19,6 @@ export const applicationSlice = createSlice({
     name: "application",
     initialState,
     reducers: {
-  
       // Action to set the authentication status
       setApplicationState(state,action) {
         state.categories=action.payload.categories;

@@ -17,9 +17,11 @@ export default function navbar(){
         <>
             <Navbar bg="dark" variant="dark" expand="sm" sticky="top" className='py-2'>
                 <Container>
-                    <Navbar.Brand onClick={()=>{router.push({pathname:'/'})}} className="d-flex w-sm-100 align-items-center justify-content-between" >
+                    <Navbar.Brand className="d-flex w-sm-100 align-items-center justify-content-between" >
                         <Navbar.Toggle className="d-sm-none" aria-controls="navbarScroll" />
-                        <Image src="https://cdn.salla.sa/Kdwnd/HTetqIXIzbmycQ6Hw2ptVa1yGEMokfsHjmA7Utpd.png" height={40} alt="cobra" />
+                        <Link href="/" >
+                            <Image src="http://127.0.0.1:8000/assets/temp/logo.jpeg" height={40} alt="cobra" />
+                        </Link>
                         <Link href="/login" className='d-sm-none px-3' passHref>
                             <Nav.Link className="d-sm-none me-5">
                             <span className="fa-layers fa-fw my-4">
@@ -43,6 +45,9 @@ export default function navbar(){
                         <Col sm="4">
                             <Link href="/account" passHref>
                                 <Nav.Link>Account</Nav.Link>
+                            </Link>
+                            <Link href="/cart" passHref>
+                                <Nav.Link>Cart</Nav.Link>
                             </Link>
                             {/* <Nav className="ms-auto d-none align-items-center justify-content-end d-sm-flex">
                                 {userState.authenticated ? 
