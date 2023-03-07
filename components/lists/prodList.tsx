@@ -4,8 +4,10 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Product from '../items/product';
 
-
-function prodList({list} : any){
+interface ProductListProps {
+    list: any;
+}
+function prodList({list} : ProductListProps){
 
     return (
         <div className="mb-4">

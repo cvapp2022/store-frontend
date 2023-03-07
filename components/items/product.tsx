@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, initCart } from '../../utils/requests';
 import { initCartState, selectCartState, setCartState } from '../../store/cartSlice';
 import { getCookie, setCookie } from '../../utils/cookie';
+import Link from 'next/link';
 
 
 function product({product} : any) {
@@ -16,18 +17,21 @@ function product({product} : any) {
 
     return(
         <>
-        <Card className=' pb-3 my-2 product' data-id={product.id}>
-            <Image src='http://127.0.0.1:8000/assets/temp/products/1.jpeg' fluid alt='Blaxk'></Image>
-            <div className="mx-3">
-                <div className="">{product.strings.product_name}</div>
-                <div className="my-1 fw-bold price">{product.price}</div>
-                <Button variant="primary" className='btn-block w-100 fw-light add_to_card_btn btn-sm-lg' onClick={()=>handleAddToCart(product.id)} >
-                    <FontAwesomeIcon className='add_to_card_btn_cart' icon={faCartShopping} />    
-                    اضافة الى السلة
-                </Button>
-            </div>
-
-        </Card>
+            <Card className=' pb-3 my-2 product' data-id={product.id}>
+                <Link href={product.category.category_permalink+'/'+product.product_permalink} passHref>
+                    <Image src='http://127.0.0.1:8000/assets/temp/products/1.jpeg' fluid alt='Blaxk'></Image>
+                </Link>
+                <div className="mx-3">
+                    <Link href={product.category.category_permalink+'/'+product.product_permalink} passHref>
+                        <div className="">{product.strings.product_name}</div>
+                    </Link>
+                    <div className="my-1 fw-bold price">{product.price}</div>
+                    <Button variant="primary" className='btn-block w-100 fw-light add_to_card_btn btn-sm-lg' onClick={()=>handleAddToCart(product.id)} >
+                        <FontAwesomeIcon className='add_to_card_btn_cart' icon={faCartShopping} />    
+                        اضافة الى السلة
+                    </Button>
+                </div>
+            </Card>
         </>
     );
     

@@ -6,12 +6,16 @@ import { AppState } from "./store";
 export interface ApplicationState {
 
     categories:Category[];
-    display_added_to_cart_modal:boolean
+    display_auth_modal:boolean;
+    display_route_loader:boolean;
+    dispaly_sidebar:boolean;
 }
 
 const initialState: ApplicationState = {
     categories:[],
-    display_added_to_cart_modal:false
+    display_auth_modal:false,
+    display_route_loader:true,
+    dispaly_sidebar:false
 };
 
 // Actual Slice
@@ -23,8 +27,14 @@ export const applicationSlice = createSlice({
       setApplicationState(state,action) {
         state.categories=action.payload.categories;
       },
-      setDisplayAddedToCartModal(state,action) {
-        state.display_added_to_cart_modal=action.payload
+      setDispalyAuthModal(state,action){
+        state.display_auth_modal=action.payload
+      },
+      setDisplayRouteLoader(state,action){
+        state.display_route_loader=action.payload
+      },
+      setDisplaySidebar(state){
+        (state.dispaly_sidebar ? state.dispaly_sidebar=false : state.dispaly_sidebar=true)
       }
   
       
@@ -42,8 +52,9 @@ export const applicationSlice = createSlice({
   });
 
 export const { setApplicationState } = applicationSlice.actions;
-export const { setDisplayAddedToCartModal }=applicationSlice.actions
+export const {setDispalyAuthModal,setDisplayRouteLoader,setDisplaySidebar}=applicationSlice.actions;
+// export const { setDisplayAddedToCartModal }=applicationSlice.actions
 
-export const selectApplicationState = (state: AppState) => state;
+export const selectApplicationState = (state: AppState) => state.application;
 
 export default applicationSlice.reducer;

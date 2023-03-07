@@ -6,9 +6,10 @@ import { cartSlice } from "./cartSlice";
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
 
 const combinedReducer = combineReducers({
-  // [applicationSlice.name]:applicationSlice.reducer,
+  [applicationSlice.name]:applicationSlice.reducer,
+  [userSlice.name]:userSlice.reducer,
   [layoutSlice.name]:layoutSlice.reducer,
-  [cartSlice.name]:cartSlice.reducer
+  [cartSlice.name]:cartSlice.reducer,
 });
 
 
@@ -16,15 +17,18 @@ const masterReducer = (state: any, action: any) => {
   if(action.type==='LOAD_SSR'){
     const nextState = {
       ...state, // use previous state
-      layout: {
-          mainLoaded:action.payload.layout.mainLoaded,
-          main:action.payload.layout.main
-      },
-      cart:{
-        items:action.payload.cart.items,
-        identifier:action.payload.cart.identifier,
-        totalAmount:action.payload.cart.totalAmount,
-      }
+      ...action.payload
+      // layout: {
+      //   mainLoaded:action.payload.layout.mainLoaded,
+      //   main:action.payload.layout.main,
+      //   prodOne:action.payload.layout.prodOne,
+      //   prodOneLoaded:action.payload.layout.prodOneLoaded
+      // },
+      // cart:{
+      //   items:action.payload.cart.items,
+      //   identifier:action.payload.cart.identifier,
+      //   totalAmount:action.payload.cart.totalAmount,
+      // }
   }
   return nextState;
   }

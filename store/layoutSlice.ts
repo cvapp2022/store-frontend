@@ -1,32 +1,40 @@
-import { createSlice, createAsyncThunk  } from "@reduxjs/toolkit";
-import axios from "axios";
-import { HYDRATE } from "next-redux-wrapper";
+import { createSlice  } from "@reduxjs/toolkit";
+import { layout } from "../types/layout";
 import { layoutItem } from "../types/layoutItem";
-// import { HYDRATE } from "next-redux-wrapper";
-import { baseUrl } from "../utils/config";
 
 
 
 export interface LayoutState {
     main:{
-      items:Array<layoutItem>
+      layout:layout
+      mainLoaded:boolean,
     },
-    mainLoaded:boolean
+    prodOne:{
+      product:any,
+      layout:layout,
+      prodOneLoaded:boolean
+    },
 }
 
 const initialState: LayoutState = {
-    main:{ items:[] },
-    mainLoaded:false
+    main:{ 
+      layout:{
+        layout_name:'',
+        layout_permalink:'',
+        items:[]
+      },
+      mainLoaded:false
+    },
+    prodOne:{
+      product:{},
+      layout:{
+        layout_name:'',
+        layout_permalink:'',
+        items:[]
+      },
+      prodOneLoaded:false,
+    },
 };
-
-// export const fetchMainLayout = createAsyncThunk(
-//   "fetchMainLayout", 
-//   () =>
-//     axios
-//       .get(`http://127.0.0.1:8000/api/en/desktop/layout/main-page`)
-//       .then((response) => response.data.payload)
-//       .catch((error) => error)
-// );
 
 // Actual Slice 
 export const layoutSlice = createSlice({
@@ -35,9 +43,13 @@ export const layoutSlice = createSlice({
     reducers: {
       setMainLayout(state,action){
         // console.log(action.payload)
-        state.mainLoaded=true;
-        state.main=action.payload;
+        state.main.mainLoaded=true;
+        state.main.layout=action.payload;
       },
+      setProdOneLayout(state,action){
+        state.prodOne.prodOneLoaded=true;
+        state.prodOne=action.payload;
+      }
       // [fetchMainLayout.fulfilled.type]: (state, action) => { 
       //   state.mainLoaded=true;
       //   state.main=action.payload;
@@ -64,9 +76,13 @@ export const layoutSlice = createSlice({
 });
 
 
-export const { setMainLayout } = layoutSlice.actions;
+export const { setMainLayout,setProdOneLayout } = layoutSlice.actions;
 
 export const selectLayoutState = (state: { layout: LayoutState; }) => state.layout;
+
+export const selectMainLayoutState=(state: { layout: LayoutState; }) =>state.layout.main;
+
+export const selectProdOneLayoutState=(state: { layout: LayoutState; }) =>state.layout.prodOne;
 
 
 export default layoutSlice.reducer;
