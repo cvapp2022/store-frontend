@@ -17,7 +17,7 @@ const Orders: NextPage = () => {
             </Head>
             <Container>
                 <Row >
-                    <OrderList list={orders} ></OrderList>
+                    {orders.length > 0 ? <OrderList list={orders} ></OrderList> :<></>}
                 </Row>
             </Container>
         </>
