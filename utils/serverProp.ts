@@ -1,11 +1,11 @@
 import axios from "axios";
-import { setDisplayRouteLoader } from "../store/appSlice";
+import { setCategoriesState, setDisplayRouteLoader } from "../store/appSlice";
 import { setCartState } from "../store/cartSlice";
-import { setMainLayout, setProdOneLayout } from "../store/layoutSlice";
+import { setCatOneLayout, setMainLayout, setProdOneLayout } from "../store/layoutSlice";
 import { wrapper } from "../store/store";
 import { setUserState } from "../store/userSlice";
 import { getCookie } from "./cookie";
-import { getOldCart, fetchMainLayout, fetchProdOneLayout, fetchUser } from "./requests";
+import { getOldCart, fetchMainLayout, fetchProdOneLayout, fetchUser, fetchCategories, fetchCatOneLayout } from "./requests";
 
 
 
@@ -32,6 +32,10 @@ export const getServerSideProps = wrapper.getServerSideProps(
                 store.dispatch(setUserState({user:fuser.payload.user,orders:fuser.payload.orders,token:token}))
             }
         }
+        var categories=await fetchCategories();
+        if(categories.success){
+            store.dispatch(setCategoriesState(categories.payload))
+        }
 
         if (url === '/') {
             var mainLayout = await fetchMainLayout();
@@ -40,8 +44,10 @@ export const getServerSideProps = wrapper.getServerSideProps(
             }
         }
         if (url === '/[category]') {
-
-            console.log('getServer in categoryOne page')
+            var categoryLayout = await fetchCatOneLayout(query.category);
+            if(categoryLayout.success){
+                store.dispatch(setCatOneLayout(categoryLayout.payload))
+            }
         }
 
         if (url === '/[category]/[product]') {

@@ -2,8 +2,8 @@ import { NextPage } from "next";
 import Head from 'next/head';
 import { Container, Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import OrderList from "../components/lists/orderList";
-import { selectOrdersState } from "../store/userSlice";
+import OrderList from "../../components/lists/orderList";
+import { selectOrdersState } from "../../store/userSlice";
 
 const Orders: NextPage = () => {
 

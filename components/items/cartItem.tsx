@@ -17,7 +17,7 @@ function CartItem({ item }: any) {
                     <div className="d-flex">
                         <Image src='http://127.0.0.1:8000/assets/temp/products/1.jpeg' width={90} alt='test' fluid></Image>
                         <div className="mx-2">
-                            <div className="">{item.product.strings.product_name}</div>
+                            <div className="">{item.product.strings.product_name } { item.product.product_type==='variation' ? item.product.product_permalink : '' }</div>
                             <div className="fw-bold">{item.product.price} </div>
                             <div className="">الاجمالي <span>{item.product.price * item.quantity}</span></div>
                         </div>

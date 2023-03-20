@@ -14,6 +14,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import AuthLoader from '../components/widgets/authLoader';
 import SideBar from '../components/widgets/sideBar';
 import ClientLoader from '../components/widgets/clientLoader';
+import { SubNav } from '../components/widgets/subNav';
 config.autoAddCss = false
 
 function MyApp({ Component, pageProps, ...rest }: AppProps) {
@@ -40,13 +41,18 @@ function MyApp({ Component, pageProps, ...rest }: AppProps) {
 
       <Provider store={store} >
         <SideBar></SideBar>
-        {!hideOn ? <NavBar></NavBar> : <></>}
+        <TopAlert></TopAlert>
+        {!hideOn ? 
+          <>
+            <NavBar></NavBar>
+            <SubNav></SubNav> 
+          </>
+        : <></>}
         <Component {...pageProps} />
         <ClientLoader></ClientLoader>
         <AuthModal></AuthModal>
         <Footer></Footer>
         <AuthLoader></AuthLoader>
-        {/* <TopAlert></TopAlert> */}
 
       </Provider>
     </>

@@ -18,7 +18,7 @@ function prodList({list} : ProductListProps){
             </Row>
             <Row>
             {/* my-2 py-3 card row flex-column align-items-center */}
-                {list.map((item: any,key: any)=> <Col key={key} xs="6" sm="3" ><Product  product={item} category={list.category}></Product></Col>)}
+                {list.length > 0 ? list.map((item: any,key: any)=> <Col key={key} xs="6" sm="3" ><Product  product={item} category={list.category}></Product></Col>) : <></>}
             </Row>
         </div>
     )

@@ -1,7 +1,8 @@
-import {  Card, Row, Col } from 'react-bootstrap';
+import { Card, Row, Col, Button,Dropdown } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { order } from '../../types/order';
-import cartItem from '../../types/cartItem';
-import OrderItem from './orderItem';
+import Link from 'next/link';
 
 interface OrderItemProps {
     order: order;
@@ -13,21 +14,21 @@ function Order({ order }: OrderItemProps) {
             <Card className='my-3'>
                 <Card.Body>
                     <Row className='justify-content-center reorder-xs' >
-                        <div className="d-flex flex-column justify-content-center align-items-center">
-                            <div className="text-center btn btn-outline-primary">
-                                <h2 style={{ color: 'unset', cursor: 'pointer' }}>رقم الطلب: <span>{order.order_identifier}</span></h2>
-                            </div>
-                        </div>
-                    </Row>
-                    <Row>
-                        <div className="text-center">المنتجات</div>
-                        {order.cart.items.length > 0 ? order.cart.items.map((item:cartItem,key:any)=>{ return <Col key={key} sm={12}> <OrderItem item={item}   ></OrderItem></Col>}) : <></> }                        
-                        {order.payment.payment_amount}
-                        <br />
-                        {order.payment.payment_method}
-                        <br />
-                        {order.payment.payment_token}
-                        
+                        <Col sm={9}>
+                            <h2 style={{ color: 'unset', cursor: 'pointer' }}>رقم الطلب: <span>{order.order_identifier}</span></h2>
+                        </Col>
+                        <Col sm={3} className="d-flex justify-content-end align-items-center">
+                            {order.payment.payment_method != 'cashOnDelevery' && order.payment.payment_status == 0 ? <Button variant='primary'>ادفع الان</Button> : <></>}
+                            <Dropdown className='mx-2'>
+                                <Dropdown.Toggle variant="info">
+                                    <FontAwesomeIcon icon={faThumbsUp} ></FontAwesomeIcon>
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    <Dropdown.Item> <Link href={'/orders/'+order.order_identifier} passHref>عرض المزيد</Link></Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </Col>
                     </Row>
                 </Card.Body>
             </Card>

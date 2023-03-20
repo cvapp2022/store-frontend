@@ -24,6 +24,9 @@ export const applicationSlice = createSlice({
     initialState,
     reducers: {
       // Action to set the authentication status
+      setCategoriesState(state,action){
+        state.categories=action.payload;
+      },
       setApplicationState(state,action) {
         state.categories=action.payload.categories;
       },
@@ -52,7 +55,7 @@ export const applicationSlice = createSlice({
   });
 
 export const { setApplicationState } = applicationSlice.actions;
-export const {setDispalyAuthModal,setDisplayRouteLoader,setDisplaySidebar}=applicationSlice.actions;
+export const {setDispalyAuthModal,setDisplayRouteLoader,setDisplaySidebar,setCategoriesState}=applicationSlice.actions;
 // export const { setDisplayAddedToCartModal }=applicationSlice.actions
 
 export const selectApplicationState = (state: AppState) => state.application;

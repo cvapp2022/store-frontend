@@ -26,10 +26,10 @@ function product({product} : any) {
                         <div className="">{product.strings.product_name}</div>
                     </Link>
                     <div className="my-1 fw-bold price">{product.price}</div>
-                    <Button variant="primary" className='btn-block w-100 fw-light add_to_card_btn btn-sm-lg' onClick={()=>handleAddToCart(product.id)} >
-                        <FontAwesomeIcon className='add_to_card_btn_cart' icon={faCartShopping} />    
-                        اضافة الى السلة
-                    </Button>
+                    {product.product_type === 'simple' ? <Button variant="primary" className='btn-block w-100 fw-light add_to_card_btn btn-sm-lg' onClick={()=>handleAddToCart(product.id)} ><FontAwesomeIcon className='add_to_card_btn_cart' icon={faCartShopping} />    اضافة الى السلة</Button> : <></> }
+                    {product.product_type === 'variable' ? <Link href={product.category.category_permalink+'/'+product.product_permalink} passHref><div className='btn btn-primary btn-block w-100 fw-light add_to_card_btn btn-sm-lg'>عرض المزيد من التفاصيل</div></Link>  : <></>}
+                    {/* {product.product_type === 'variable' ? <Button variant="primary" className='btn-block w-100 fw-light add_to_card_btn btn-sm-lg' onClick={()=>handleAddToCart(product.id)} > عرض المزيد من التفاصيل </Button> : <></> } */}
+                    
                 </div>
             </Card>
         </>

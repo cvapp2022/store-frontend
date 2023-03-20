@@ -8,6 +8,7 @@ export  interface order {
         items:Array<cartItem>
     },
     payment:{
+        payment_status: number
         payment_method:string,
         payment_amount:string
         payment_token:string

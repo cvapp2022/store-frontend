@@ -15,7 +15,7 @@ export default function ClientLoader() {
     var application = useSelector(selectApplicationState);
     const router = useRouter();
     const dispatch = useDispatch()
-    const clientRoutes = ['/checkout', '/cart','/orders','/user'].includes(router.pathname);
+    const clientRoutes = ['/checkout', '/cart','/user','/orders','/orders/[order]'].includes(router.pathname);
 
     useEffect(() => {
         if (clientRoutes) {

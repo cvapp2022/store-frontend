@@ -1,20 +1,42 @@
 import { baseUrl } from "./config";
 import axios from 'axios';
+import { getCookie } from "./cookie";
+
+let lang: string
+var cookieLang = getCookie('lang', { headers: { cookie: '' } });
+if (!cookieLang) {
+    lang = 'ar';
+}
+else {
+    lang = cookieLang
+}
+
+
+
+export const fetchCategories = async () => {
+    const response = await axios.get(`${baseUrl}/${lang}/category/`)
+    const { success, payload } = response.data;
+    return { success, payload };
+}
 
 export const fetchMainLayout = async () => {
 
-    const response = await axios.get(`${baseUrl}/en/layout/desktop/main-page`)
-
-    // const response = await fetch(
-    //     `${baseUrl}/en/layout/desktop/main-page`
-    // )
+    const response = await axios.get(`${baseUrl}/${lang}/layout/desktop/main-page`)
     const { success, payload } = response.data;
     return { success, payload };
 }
 
 export const fetchProdOneLayout = async (productPermalink: any) => {
     const response = await axios.get(
-        `${baseUrl}/en/layout/desktop/productOne/${productPermalink}`
+        `${baseUrl}/${lang}/layout/desktop/productOne/${productPermalink}`
+    )
+    const { success, payload } = response.data;
+    return { success, payload };
+}
+
+export const fetchCatOneLayout = async (categoryPermalink: any) => {
+    const response = await axios.get(
+        `${baseUrl}/${lang}/layout/desktop/categoryOne/${categoryPermalink}`
     )
     const { success, payload } = response.data;
     return { success, payload };
@@ -165,4 +187,15 @@ export const saveOrder = async (data: any) => {
     )
     const { success, message, payload } = response.data;
     return { success, message, payload };
+}
+
+export const fetchOrder=async(data:any)=>{
+
+    const response = await axios.get(
+        `${baseUrl}/order/${data.id}`,
+    )
+    const { success, message, payload } = response.data;
+    return { success, message, payload };
+
+
 }

@@ -72,7 +72,7 @@ export default function LayoutNavbar() {
     return (
         <>
             <Navbar bg="dark" variant="dark" expand="sm" sticky="top" className='py-2'>
-                <Container>
+                <Container fluid>
                     <Navbar.Brand className="d-flex w-sm-100 align-items-center justify-content-between" >
                         <Navbar.Toggle className="d-sm-none" onClick={() => { dispatch(setDisplaySidebar()) }} />
                         <Link href="/" >
@@ -108,6 +108,7 @@ export default function LayoutNavbar() {
                     </Row>
                 </Container>
             </Navbar>
+
         </>
     );
 }
