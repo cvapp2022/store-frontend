@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { cartItem } from "../types/cartItem";
+import  CartItem  from "../types/cartItem";
 
 export interface CartState {
 
-    items:Array<cartItem>,
+    items:Array<CartItem>,
     identifier:string,
     totalAmount:Number
 }
