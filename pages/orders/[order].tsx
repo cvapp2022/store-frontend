@@ -9,17 +9,19 @@ const Order: NextPage = () => {
 
     const router = useRouter()
     const [order, setOrder] = useState<any>({})
+    const [orderLoaded,setOrderLoaded]=useState(false);
 
     useEffect(() => {
 
         if(router.isReady){
             console.log('router is ready')
             // get order
-            var order = async () => { return await fetchOrder({ id: router.query.order }) };
-            order().then((resp) => {
+            var orderReq = async () => { return await fetchOrder({ id: router.query.order }) };
+            orderReq().then((resp) => {
                 if (resp.success) {
                     console.log(resp.payload)
                     setOrder(resp.payload)
+                    setOrderLoaded(true);
                 }
             })
         }
@@ -37,7 +39,7 @@ const Order: NextPage = () => {
                 <Row className="my-3">
                     <Col>
                         {
-                            order ? 
+                            orderLoaded ? 
                             <>
                                 <Card>
                                     <Card.Header>
